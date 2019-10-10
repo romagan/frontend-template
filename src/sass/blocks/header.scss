@@ -1,101 +1,101 @@
 .main-nav {}
 
 .main-nav__list {
-  @include list;
+    @include list;
 }
 
 .main-nav__item {}
 
 .main-nav__link {
-  @include transition;
-
-  &:hover {
     @include transition;
-  }
 
-  &:active,
-  &:focus {
-    opacity: 0.6;
-  }
+    &:hover {
+        @include transition;
+    }
+
+    &:active,
+    &:focus {
+        opacity: 0.6;
+    }
 }
 
 .main-nav__toggle {
-  position: absolute;
-  top: 21px;
-  right: 0;
+    position: absolute;
+    top: 21px;
+    right: 0;
 
-  width: 25px;
-  height: 22px;
-  padding: 0;
+    width: 25px;
+    height: 22px;
+    padding: 0;
 
-  background-color: transparent;
-  border: none;
-  outline: none;
+    background-color: transparent;
+    border: none;
+    outline: none;
 }
 
 .main-nav--closed .main-nav__toggle::before,
 .main-nav--closed .main-nav__toggle::after {
-  content: "";
-
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  width: 25px;
-  height: 2px;
-
-  box-shadow: 0 9px 0 0 #000000, 0 18px 0 0 #000000;
-  background-color: #000000;
-
-  transition: box-shadow 0.4s ease-in;
-}
-
-.main-nav--closed .main-nav__toggle::after {
-  box-shadow: none;
-}
-
-.main-nav--opened .main-nav__toggle {
-
-  &::before,
-  &::after {
     content: "";
 
     position: absolute;
-    top: 50%;
+    top: 0;
     left: 0;
 
     width: 25px;
     height: 2px;
 
+    box-shadow: 0 9px 0 0 #000000, 0 18px 0 0 #000000;
     background-color: #000000;
 
-    transition: box-shadow 0.1s ease-in-out, transform 0.4s ease-in;
-  }
+    transition: box-shadow 0.4s ease-in;
+}
 
-  &::before {
-    transform: rotate(45deg) translateY(-50%);
-  }
+.main-nav--closed .main-nav__toggle::after {
+    box-shadow: none;
+}
 
-  &::after {
-    transform: rotate(-45deg) translateY(-50%);
-  }
+.main-nav--opened .main-nav__toggle {
+
+    &::before,
+    &::after {
+        content: "";
+
+        position: absolute;
+        top: 50%;
+        left: 0;
+
+        width: 25px;
+        height: 2px;
+
+        background-color: #000000;
+
+        transition: box-shadow 0.1s ease-in-out, transform 0.4s ease-in;
+    }
+
+    &::before {
+        transform: rotate(45deg) translateY(-50%);
+    }
+
+    &::after {
+        transform: rotate(-45deg) translateY(-50%);
+    }
 }
 
 .main-nav--closed .main-nav__list {
-  display: none;
+    display: none;
 }
 
 @media (max-width: $tablet-width - 1px) {
-  .main-nav--closed .main-nav__list {
-      display: none;
-  }
+    .main-nav--closed .main-nav__list {
+        display: none;
+    }
 }
 
 @media (min-width: $tablet-width) {
 
-  .main-nav__toggle {
-    display: none;
-  }
+    .main-nav__toggle {
+        display: none;
+    }
 }
 
 @media (min-width: $desktop-width) {}
