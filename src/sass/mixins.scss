@@ -76,3 +76,32 @@
 @mixin transition {
 	transition: $transition;
 }
+
+@mixin firefox {
+    @-moz-document url-prefix() {
+        @content;
+    }
+}
+
+@mixin arrow($direction, $size, $color) {
+    display: inline-block;
+    padding: $size;
+    border: solid $color;
+    border-width: 0 $size $size 0;
+
+    @if $direction == right {
+        transform: rotate(-45deg);
+    }
+
+    @if $direction == left {
+        transform: rotate(135deg);
+    }
+
+    @if $direction == up {
+        transform: rotate(-135deg);
+    }
+
+    @if $direction == down {
+        transform: rotate(45deg);
+    }
+}
