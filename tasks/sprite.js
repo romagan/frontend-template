@@ -7,9 +7,8 @@ import debug from "gulp-debug";
 import browserSync from 'browser-sync';
 
 import  {dev, prod} from '../gulpfile.esm';
-import {server} from './watch';
 
-gulp.task('sprite', () => {
+const sprite = () => {
 	return gulp.src('src/img/svg/*.svg')
 		.pipe(svg({
 			mode: {
@@ -23,5 +22,7 @@ gulp.task('sprite', () => {
 		.pipe(debug({
             'title': 'Sprite'
 		}))
-		.on('end', server.reload);
-})
+		.on('end', browserSync.reload);
+}
+
+export default sprite;

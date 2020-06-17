@@ -10,10 +10,8 @@
     z-index: 200;
 
     opacity: 0.9;
-    background-color: #dddddd;
+    background-color: $color-white;
 }
-
-/* popup */
 
 .popup {
     position: fixed;
@@ -27,8 +25,8 @@
     width: 260px;
     margin: 0 auto;
 
-    color: $text;
-    background-color: #ffffff;
+    color: $color-text;
+    background-color: $color-white;
     box-shadow: 0 5px 10px 0 rgba(0, 1, 1, 0.25);
 
     transform: translate(-50%, -50%);
@@ -65,8 +63,8 @@
     padding: 10px;
 
     font: inherit;
-    color: $text;
-    border: 1px solid $gray-form;
+    color: $color-text;
+    border: 1px solid $color-accent;
     border-radius: 5px;
     background-color: transparent;
 }
@@ -77,16 +75,16 @@
 
     font-size: 18px;
     line-height: 24px;
-    color: #ffffff;
+    color: $color-white;
     text-transform: none;
 
-    background-color: $text;
+    background-color: $color-text;
 }
 
 .popup__privacy {
     display: block;
 
-    color: $text;
+    color: $color-text;
     text-align: center;
 }
 
@@ -105,6 +103,28 @@
 
     cursor: pointer;
 
+    &::before,
+    &::after {
+        content: "";
+
+        position: absolute;
+        top: 10px;
+        left: 2px;
+
+        width: 19px;
+        height: 3px;
+
+        background-color: $color-black;
+    }
+
+    &::before {
+        transform: rotate(45deg);
+    }
+
+    &::after {
+        transform: rotate(-45deg);
+    }
+
     &:hover {
         background-color: transparent;
 
@@ -113,7 +133,7 @@
 
     &:hover::before,
     &:hover::after {
-        background-color: $accent;
+        background-color: $color-accent;
     }
 
     &:active,
@@ -121,37 +141,3 @@
         opacity: 0.4;
     }
 }
-
-.popup__close::before,
-.popup__close::after {
-    content: "";
-
-    position: absolute;
-    top: 10px;
-    left: 2px;
-
-    width: 19px;
-    height: 3px;
-
-    background-color: #000000;
-}
-
-.popup__close::before {
-    transform: rotate(45deg);
-}
-
-.popup__close::after {
-    transform: rotate(-45deg);
-}
-
-
-@media (min-width: $tablet-width) {
-
-    .popup {
-        width: 354px;
-    }
-}
-
-@media (min-width: $desktop-width) {}
-
-@media (min-width: $xl-width) {}

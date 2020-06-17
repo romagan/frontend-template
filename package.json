@@ -7,12 +7,13 @@
     "stylelint": "stylelint 'source/sass/**/*.scss' --syntax scss",
     "test": "npm run stylelint",
     "build": "gulp build",
-    "start": "gulp dev"
+    "dev": "gulp devbuild"
   },
   "browserslist": [
     "last 2 versions",
-    "IE 11",
-    "Firefox ESR"
+    "not dead",
+    "not ie <= 11",
+    "iOS >= 12"
   ],
   "repository": {
     "type": "git",
@@ -57,6 +58,8 @@
     "gulp-svg-sprite": "^1.5.0",
     "gulp-webp": "^4.0.1",
     "require-dir": "^1.2.0",
+    "smart-grid": "^2.1.2",
+    "webpack": "4.43.0",
     "webpack-stream": "^5.2.1"
   },
   "dependencies": {

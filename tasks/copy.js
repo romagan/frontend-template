@@ -2,12 +2,15 @@
 
 import gulp from 'gulp';
 
-gulp.task('copy', function() {
+const copy = () => {
   return gulp
     .src([
-        'src/fonts/**/*.{woff,woff2}'
-    ], {
-      base: 'src/'
+        'src/fonts/**/*',
+        'src/img/**/*',
+    ],{
+      base: 'src'
     })
     .pipe(gulp.dest('build'));
-});
+}
+
+export default copy;

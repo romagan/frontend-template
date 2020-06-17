@@ -1,21 +1,18 @@
 'use strict';
 
 import gulp from 'gulp';
+import styles from './styles';
+import scripts from './scripts';
 import browserSync from 'browser-sync';
 
-export const server = browserSync.create();
+const watch = () => {
+	gulp.watch('src/sass/**/*.{scss,sass}', gulp.series(styles));
+	gulp.watch('src/*.html').on('change', browserSync.reload);
+	gulp.watch('src/index.js').on('change', gulp.series(scripts));
+	gulp.watch([
+        'src/fonts/**/*',
+        'src/img/**/*'
+    ], browserSync.reload);
+}
 
-gulp.task('watch', () => {
-	server.init({
-		server: 'src/',
-		notify: false,
-		open: true,
-		cors: true,
-		ui: false
-		// tunnel: true, tunnel: 'projectname', // Demonstration page: http://projectname.localtunnel.me
-	});
-
-	gulp.watch('src/sass/**/*.{scss,sass}', gulp.series('styles'));
-	gulp.watch('src/*.html').on('change', server.reload);
-	gulp.watch('src/js/*.js').on('change', server.reload);
-});
+export default watch;

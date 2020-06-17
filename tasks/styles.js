@@ -11,9 +11,8 @@ import minify from 'gulp-csso';
 import browserSync from 'browser-sync';
 
 import  {dev, prod} from '../gulpfile.esm';
-import {server} from './watch';
 
-gulp.task('styles', () => {
+const styles = () => {
 	return gulp.src('src/sass/style.scss')
 		.pipe(plumber())
 		.pipe(sass())
@@ -29,5 +28,7 @@ gulp.task('styles', () => {
 		})))
 		.pipe(gulpif(dev, gulp.dest('src/css')))
 		.pipe(gulpif(prod, gulp.dest('build/css')))
-		.pipe(server.stream());
-});
+		.pipe(browserSync.stream());
+};
+
+export default styles;

@@ -20,25 +20,25 @@
 
     font-size: 18px;
     line-height: 30px;
-    color: $text;
+    color: $color-text;
     letter-spacing: 0.005em;
     font-weight: 400;
 
     border: 1px solid transparent;
 
     &.active {
-        color: $accent;
+        color: $color-accent;
 
-        border-color: $accent;
+        border-color: $color-accent;
         cursor: default;
     }
 
     &:not(.active):hover {
         @include transition;
 
-        color: $accent;
+        color: $color-accent;
 
-        border-color: $accent;
+        border-color: $color-accent;
     }
 
     &:not(.active):active,
@@ -63,7 +63,7 @@
         width: 10px;
         height: 10px;
 
-        border: 1px solid $accent;
+        border: 1px solid $color-accent;
 
         transform: translate(-50%, -50%) rotate(45deg);
     }
@@ -86,13 +86,13 @@
         &::before {
             @include transition;
 
-            border-color: $accent;
+            border-color: $color-accent;
         }
     }
 
     &:not(.disabled):active,
     &:not(.disabled):focus {
-        border-color: $accent;
+        border-color: $color-accent;
         opacity: 0.8;
     }
 
@@ -100,31 +100,7 @@
         cursor: default;
 
         &::before {
-            border-color: $text;
+            border-color: $color-text;
         }
     }
 }
-
-@media (min-width: $tablet-width) {
-    .pagination__container {
-        margin-bottom: 54px;
-        margin-top: 55px;
-    }
-}
-
-@media (min-width: $desktop-width) {
-    .pagination__link {
-        width: 60px;
-		height: 60px;
-	}
-	
-	.pagination__arrow--prev {
-		margin-right: 10px;
-	}
-
-	.pagination__arrow--next {
-		margin-left: 10px;
-	}
-}
-
-// @media (min-width: $xl-width) {}

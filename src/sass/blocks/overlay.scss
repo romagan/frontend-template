@@ -1,0 +1,14 @@
+.overlay {
+    position: fixed;
+    z-index: 1000;
+
+    display: none;
+    width: 100%;
+    height: 100vh;
+
+    background-color: rgba($color-black, 0.2);
+
+    &_visible {
+        display: block;
+    }
+}

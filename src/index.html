@@ -11,8 +11,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<link rel="preload" href="fonts/opensans.woff2" as="font">
-  	<link rel="preload" href="fonts/opensansbold.woff2" as="font">
+	<link rel="preload" href="fonts/opensans.woff2" as="font" crossorigin="anonymous">
 
 	<link rel="stylesheet" href="css/style.css">
 
@@ -30,28 +29,35 @@
 </head>
 
 <body>
-
 	<div style="display: none;">
     	<include src="build/img/sprite.svg"></include>
 	</div>
 
+	<div class="overlay js-overlay" aria-label="Popups overlay"></div>
+
 	<header class="header">
+		<div class="container">
+			<nav class="main-nav">
+				<ul class="main-nav__list">
 
-		<nav class="main-nav">
-			<ul class="main-nav__list">
-
-				<li class="main-nav__item">
-					<a class="main-nav__link" href=""></a>
-				</li>
-				
-			</ul>
-		</nav>
-
+					<li class="main-nav__item">
+						<a class="main-nav__link" href="">Header</a>
+					</li>
+					
+				</ul>
+			</nav>
+		</div>
 	</header>
 
-	<main class="main"></main>
+	<main class="main">
+		<div class="container">
+			Main
+		</div>
+	</main>
 
-	<footer class="footer"></footer>
+	<footer class="footer">
+		<div class="container"></div>
+	</footer>
 	
 	<script src="js/svgxuse.min.js" defer></script>
 	<script src="js/script.js"></script>

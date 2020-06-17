@@ -1,0 +1,406 @@
+h1,
+.h1 {
+    margin-top: 0;
+    margin-bottom: $grid-unit*2;
+    
+    font-size: 30px;
+    line-height: $grid-unit*4;
+    color: $color-black;
+    font-weight: 400;
+
+    @include tablet-block {
+        margin-bottom: $grid-unit*3;
+
+        font-size: 36px;
+        line-height: $grid-unit*5;
+    }
+
+    @include md-block {
+        margin-bottom: $grid-unit*4;
+
+        font-size: 60px;
+        line-height: $grid-unit*8;
+    }
+}
+
+h2,
+.h2 {
+    margin-top: 0;
+    margin-bottom: $grid-unit;
+
+    font-family: $font-primary;
+    font-size: 26px;
+    line-height: $grid-unit*4;
+    color: $color-black;
+    letter-spacing: 0.33px;
+    font-weight: 300;
+
+    @include tablet-block {
+        font-size: 30px;
+        letter-spacing: 0.38px;
+    }
+
+    @include md-block {
+        margin-bottom: $grid-unit*2;
+
+        font-size: $grid-unit*6;
+        line-height: $grid-unit*6;
+        letter-spacing: 0.61px;
+    }
+}
+
+h3,
+.h3 {
+    margin-top: 0;
+    margin-bottom: $grid-unit/2;
+
+    font-family: $font-primary;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: $grid-unit*3;
+    color: $color-black;
+    letter-spacing: 0.25px;
+
+    @include tablet-block {
+        margin-bottom: 0;
+
+        font-size: 22px;
+        line-height: $grid-unit*4;
+        letter-spacing: 0.28px;
+    }
+
+    @include md-block {
+        margin-bottom: $grid-unit*2;
+
+        font-size: 34px;
+        line-height: $grid-unit*5;
+        letter-spacing: 0.43px;
+    }
+}
+
+h4,
+.h4 {
+    margin: 0;
+
+    font-family: $font-primary;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: $grid-unit*3;
+    color: $color-black;
+    letter-spacing: 0.23px;
+
+    @include tablet-block {
+        font-size: 18px;
+        line-height: $grid-unit*3;
+    }
+
+    @include md-block {
+        font-size: 22px;
+        line-height: $grid-unit*4;
+        letter-spacing: 0.28px;
+    }
+}
+
+h5,
+.h5 {
+    margin-top: 0;
+    margin-bottom: $grid-unit/2;
+
+    font-family: $font-primary;
+    font-size: 16px;
+    line-height: $grid-unit*2;
+    font-weight: 300;
+    color: $color-black;
+
+    @include tablet-block {
+        font-size: 16px;
+        line-height: $grid-unit*3;
+        letter-spacing: 0.2px;
+    }
+
+    @include md-block {
+        font-size: 18px;
+        line-height: $grid-unit*4;
+        letter-spacing: 0.23px;
+    }
+}
+
+h6,
+.h6 {
+    margin-top: 0;
+    margin-bottom: $grid-unit/2;
+
+    font-family: $font-primary;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: $grid-unit*2;
+    color: $color-black;
+
+    @include md-block {
+        line-height: $grid-unit*3;
+    }
+}
+
+table {
+    display: block;
+    margin-bottom: $grid-unit*5;
+    overflow-x: scroll;
+
+    border: none;
+    border-spacing: 0;
+
+    thead {
+        tr {
+            background-color: $color-white;
+        }
+    }
+
+    tbody {
+        tr {
+            &:nth-child(even) {
+                background-color: $color-white;
+            }
+    
+            &:nth-child(odd) {
+                background: $color-text;
+            }
+        }
+    }
+
+    tr {
+        vertical-align: top;
+    }
+
+    td,
+    th {
+        min-width: 86px;
+        padding: $grid-unit*2;
+        padding-left: 0;
+
+        font-size: 14px;
+        line-height: $grid-unit*3;
+        letter-spacing: 0.18px;
+        color: $color-text;
+        text-align: left;
+
+        &:first-child {
+            min-width: $grid-unit*9;
+            padding-left: $grid-unit*2;
+
+            text-align: center;
+        }
+    }
+
+    td {
+        font-weight: 300;
+    }
+
+    th {
+        font-weight: 500;
+    }
+
+    @include tablet-block {
+        display: table;
+        overflow: hidden;
+        margin-bottom: $grid-unit*7;
+
+        td,
+        th {
+            min-width: 95px;
+            padding-right: $grid-unit*5;
+
+            &:first-child {
+                min-width: 95px;
+                padding-left: $grid-unit*5;
+            }
+        }
+
+        td {
+            &:last-child {
+                padding-right: $grid-unit*8;
+            }
+        }
+    }
+
+    @include md-block {
+        min-width: 100%;
+
+        td,
+        th {
+            max-width: 300px;
+            
+            &:first-child {
+                min-width: $grid-unit*9;
+                padding-left: $grid-unit*4;
+            }
+        }
+    }
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+ul:not([class]) {
+    margin-bottom: $grid-unit*4;
+
+    li {
+        position: relative;
+
+        margin: 0;
+        margin-bottom: $grid-unit*3;
+        padding-left: $grid-unit*3;
+
+        font-weight: 300;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &::after {
+            content: '';
+
+            position: absolute;
+            top: $grid-unit;
+            left: 0;
+
+            display: block;
+            height: 6px;
+            width: 6px;
+
+            background: $color-text;
+            
+            transform: rotate(45deg);
+        }
+    }
+
+    @include tablet-block {
+        margin-bottom: $grid-unit*4;
+    }
+
+    @include md-block {
+        margin-bottom: $grid-unit*7;
+    }
+}
+
+ol:not([class]) {
+    counter-reset: my-awesome-counter;
+
+    margin: 0;
+    padding-left: 0;
+    margin-bottom: $grid-unit*4;
+
+    font-weight: 300;
+
+    list-style: none;
+
+    li {
+        counter-increment: my-awesome-counter;
+
+        position: relative;
+
+        margin: 0;
+        margin-bottom: $grid-unit*3;       
+        padding-left: $grid-unit*3;  
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+
+        &::before {
+            content: counter(my-awesome-counter) ". ";
+
+            position: absolute;
+            left: 0;
+            top: 0;
+
+            display: block;
+
+            font-weight: 600;
+            letter-spacing: -0.32px;
+        }
+    }
+
+    ol {
+        counter-reset: listStyle;
+
+        margin-top: $grid-unit*2;
+        margin-bottom: $grid-unit*2;
+        margin-left: $grid-unit;
+
+        li {
+            counter-increment: listStyle;
+
+            position: relative;
+
+            margin: 0;
+            margin-bottom: $grid-unit*3;
+            padding-left: $grid-unit*3;
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+
+            &::before {
+                content: counter(listStyle, lower-latin) ".";
+
+                position: absolute;
+                left: 0;
+                top: 0;
+
+                display: block;
+
+                font-weight: 600;
+                letter-spacing: -0.32px;
+            }
+        }
+    }
+
+    @include tablet-block {
+        margin-bottom: $grid-unit*4;
+    }
+
+    @include md-block {
+        margin-bottom: $grid-unit*7;
+    }
+}
+
+p:not([class]) {
+    margin: 0;
+    margin-bottom: $grid-unit*2;
+
+    font-size: 14px;
+    line-height: $grid-unit*3;
+    font-weight: 300;
+    letter-spacing: 0.18px;
+    color: $color-text;
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+
+    @include tablet-block {
+        margin-bottom: $grid-unit*3;
+    }
+}
+
+a:not([class]) {
+    color: $color-accent;
+    line-height: 20px;
+
+    transition: $speed ease-in-out;
+
+    &:hover {
+        color: $color-accent;
+
+        transition: $speed ease-in-out;
+    }
+
+    &:focus,
+    &:active {
+        opacity: 0.8;
+    }
+}

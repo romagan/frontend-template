@@ -3,19 +3,25 @@
 import gulp from 'gulp';
 import gulpif from 'gulp-if';
 
+import clean from './tasks/clean';
+import styles from './tasks/styles';
+import scripts from './tasks/scripts';
+import watch from './tasks/watch';
+import server from './tasks/server';
+import sprite from './tasks/sprite';
+import copy from './tasks/copy';
+
 const requireDir = require('require-dir');
 const dir = requireDir('./tasks/');
 
 export let dev = true;
 export let prod = !dev;
 
-gulp.task(
-  'dev',
-  gulp.series('clean', gulp.parallel('styles', 'scripts', 'watch', 'sprite'))
-);
+const devbuild = gulp.series(clean, gulp.parallel(styles, scripts, sprite), gulp.parallel(watch, server));
+exports.devbuild = devbuild;
 
-const build = gulp.series('clean', 'styles', 'scripts', 'sprite', 'images', 'copy');
-gulp.task('build', build);
+const build = gulp.series(clean, styles, scripts, sprite, 'images', copy);
+exports.build = build;
 
 
 gulp.task('html', function() {

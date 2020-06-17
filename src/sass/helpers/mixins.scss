@@ -1,0 +1,290 @@
+@mixin box($width, $height : $width) { width:$width; height:$height;}
+
+@mixin remove-br { & br { display:none; }}
+
+@mixin pos($position: absolute, $values...) {
+
+    $values: m_parseDirections($values);
+
+    position: $position;
+    top:    map-get($values, 'top');
+    left:   map-get($values, 'left');
+    right:  map-get($values, 'right');
+    bottom: map-get($values, 'bottom');
+
+}
+
+@mixin gradient($angle: 90, $colors...)  { background:linear-gradient(#{$angle}deg, $colors); }
+
+@mixin transform-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+@mixin full-size { display:block; position:absolute; top:0; left:0; width:100%; height:100%; object-fit: cover;}
+
+@mixin visually-hidden { position: absolute; z-index:-1; width:0; height:0; overflow:hidden; }
+@mixin vh { @include visually-hidden; }
+
+@mixin aspect-ratio($width, $height) { display:block; padding-top:($height / $width) * 100%; }
+
+@mixin clearfix { &::after { display:block; content:''; clear:both; } }
+
+@mixin ellipsis($width : 100%) { max-width:$width; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+
+@mixin font($params)  {
+
+    $params: inspect($params);
+
+    $font-style:null;
+    $font-weight:null;
+    $font-size: null;
+    $line-height: null;
+    $font-family: null;
+
+    $font-weight-values: '100' '200' '300' '400' '500' '600' '700' '800' '900';
+    $font-style-values: 'normal' 'italic';
+    $font-size-units: 'px' 'em' 'rem' '%' 'ex' 'ch'; // Other is dead
+
+    $list: explode($params, ' ');
+
+    @each $param in $list {
+
+        // Font-weight
+        @if (contains($font-weight-values, $param)) {
+            $font-weight: unquote($param);
+        } @else  {
+
+            // Font-style
+            @if (contains($font-style-values, $param)) {
+                $font-style: unquote($param);
+            } @else {
+
+                // Font-size
+                @if (is_part_of_list($font-size-units, $param)) {
+
+                    // Font-size and line-height both
+                    @if (str-index($param, '/')) {
+
+                        $temp: explode($param, '/');
+
+                        $font-size: unquote(nth($temp, 1));
+                        $line-height: unquote(nth($temp, 2));
+
+                        // Only font-size
+                    } @else {
+
+                        $font-size: unquote($param);
+
+                    }
+
+                    // Otherwise it's font-family
+                } @else {
+
+                    $font-family: unquote(str-replace($param, '_', ' '));
+
+                }
+
+            }
+
+        }
+
+
+    }
+
+    font-style: $font-style;
+    font-weight: $font-weight;
+    font-size: $font-size;
+    line-height: $line-height;
+    font-family: $font-family;
+
+}
+
+
+/**
+ * Custom font-face implementation.
+ *
+ * @param      {String}  $short_alias  []           - The short alias of font.
+ * @param      {String}  $full_name    []           - The full name of the font. Should be equal to font folder name.
+ * @param      {String}  $style        [normal]     - Font-style property value.
+ * @param      {String}  $weight       [normal]     - Font-weight property value.
+ */
+@mixin font-face($short_alias, $full_name, $style : normal, $weight : normal) {
+
+    $path: '../fonts/' + $full_name + '/' + str-replace($full_name, ' ', '-');
+
+    $weight: inspect($weight);  // Fix "Black" value transpile
+
+    @if ($weight != normal) {
+
+        $path: $path + '-' + capitalize($weight);
+
+    }
+
+    @if ($style == italic) {
+
+        $path:  $path + '-' + capitalize($style);
+
+    }
+
+    $weight: map-get((
+
+            Hairline    : 100,
+            ExtraThin   : 100,
+            UltraLight  : 100,
+            Thin        : 100,
+
+            ExtraLight  : 200,
+
+            Light       : 300,
+
+            Normal      : normal,
+            normal      : normal,
+
+            Medium      : 500,
+            Book        : 500,
+
+            SemiBold    : 600,
+            DemiBold    : 600,
+
+            Bold        : 700,
+
+            ExtraBold   : 800,
+            Heavy       : 800,
+
+            #{Black}    : 900, // To prevent transpile to #000000
+
+    ), $weight);
+
+    @font-face {
+        font-family: $short_alias;
+        src: url($path + '.woff2') format('woff2'),
+        url($path + '.woff') format('woff');
+        font-weight: $weight;
+        font-style: $style;
+        font-display: swap;
+    }
+
+}
+
+@mixin bgImg($endPath) {
+    background-image: url("/local/templates/main/images/raster/#{$endPath}");
+}
+
+
+@mixin svgBg($name, $width:0, $height:0) {
+    @if($width != 0) {
+        width: $width;
+    }
+    @if($height != 0) {
+        height: $height;
+    }
+    background-image: url("/local/templates/main/images/vector/#{$name}.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+@function em($pixels, $context: $baseFontSize) {
+    @return #{$pixels/$context}em;
+}
+
+@mixin resetList($includePaddings: true, $includeMargins: true) {
+    list-style-type: none;
+    @if($includePaddings) {
+        padding: 0;
+    }
+    @if($includeMargins) {
+        margin: 0;
+    }
+}
+
+@mixin circle($size) {
+    @include box($size);
+    border-radius: 50%;
+}
+
+@mixin tick($height, $width, $borderWidth, $borderColor) {
+    display: inline-block;
+    transform: rotate(45deg);
+    height: $height;
+    width: $width;
+    border-bottom: $borderWidth solid $borderColor;
+    border-right: $borderWidth solid $borderColor;
+}
+
+
+@mixin transition {
+    transition: $transition;
+}
+
+@mixin noSelect() {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+////////////////
+
+// =============================================================================
+// Background
+// =============================================================================
+
+@mixin background($imgpath,$position: center,$repeat: no-repeat, $size: contain) {
+    background: {
+        image: url($imgpath);
+        position: $position;
+        repeat: $repeat;
+        size: $size;
+    }
+}
+
+@mixin bgImgCenter($imgpath) {
+    background: {
+        image: url($imgpath);
+        position: center;
+        repeat: no-repeat;
+        size: contain;
+    }
+}
+
+@mixin triangle($direction, $sizeH, $sizeV, $color){
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    -moz-transform: scale(.9999);
+
+    @if $direction == top {
+        border-width: 0 $sizeV $sizeH $sizeV;
+        border-color: transparent transparent $color transparent;
+    }
+    @if $direction == bottom{
+        border-width: $sizeV $sizeH 0 $sizeV;
+        border-color: $color transparent transparent transparent;
+    }
+    @if $direction == left{
+        border-width: $sizeV $sizeH $sizeV 0;
+        border-color: transparent $color transparent transparent;
+    }
+    @if $direction == right{
+        border-width: $sizeV 0 $sizeV $sizeH;
+        border-color: transparent transparent transparent $color;
+    }
+    @if $direction == topright{
+        border-width: 0 $sizeH $sizeV 0;
+        border-color: transparent $color transparent transparent;
+    }
+    @if $direction == bottomright{
+        border-width: 0 0 $sizeH $sizeV;
+        border-color: transparent transparent $color transparent;
+    }
+    @if $direction == bottomleft{
+        border-width: $sizeH 0 0 $sizeV;
+        border-color: transparent transparent transparent $color;
+    }
+    @if $direction == topleft{
+        border-width: $sizeH $sizeV 0 0;
+        border-color: $color transparent transparent transparent;
+    }
+}

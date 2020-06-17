@@ -1,0 +1,30 @@
+
+//Media from smartgrid.scss
+$hd: $break_hd;
+$xl: $break_xl;
+$desktop: $break_desktop;
+$l: $break_l;
+$md: $break_md;
+$tabletV: $break_tabletV;
+$tablet: $break_tablet;
+$ms: $break_ms;
+$s: $break_s;
+$mobile: $break_mobile;
+
+//Colors
+$color-accent: #447ade;
+$color-accentHover: #886630;
+$color-text: #222222;
+$color-error: #9F210C;
+$color-white: #ffffff;
+$color-black: #000000;
+
+//Fonts
+$font-primary: "Roboto", "Arial", sans-serif;
+$font-secondary: "Stolzl", sans-serif;
+$font-tertiary: "Baskerville";
+
+$grid-unit: 8px;
+
+$speed: 0.2s;
+$transition: 0.5s $speed;
