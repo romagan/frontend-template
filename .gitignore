@@ -10,3 +10,6 @@ npm-debug.*
 source/css/*.css
 Thumbs.db
 build/
+src/img/
+src/css/style.css
+src/js/script.js

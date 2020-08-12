@@ -36,7 +36,7 @@
     &_accent {
         padding: 12px;
 
-        line-height: $grid-unit*2;
+        line-height: $unit*2;
         text-align: center;
         color: $color-white;
 
@@ -57,7 +57,7 @@
         }
 
         @include tablet-block {
-            padding: $grid-unit*2;
+            padding: $unit*2;
         }
     }
 

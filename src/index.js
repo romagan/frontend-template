@@ -4,6 +4,5 @@ import $ from 'jquery';
 import slick from 'slick-carousel';
 
 window.addEventListener('DOMContentLoaded', function() {
-console.log('22');
 // console.log('22');
 });

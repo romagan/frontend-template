@@ -2,10 +2,10 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    margin-bottom: $grid-unit;
+    margin-bottom: $unit;
 
     li {
-        margin-right: $grid-unit*3;
+        margin-right: $unit*3;
 
         &:last-child {
             margin-right: 0;
@@ -13,15 +13,15 @@
     }
 
     @include tablet-block {
-        margin-bottom: $grid-unit*3;
+        margin-bottom: $unit*3;
 
         li {
-            margin-right: $grid-unit*5;
+            margin-right: $unit*5;
         }
     }
 
     @include md-block {
-        margin-bottom: $grid-unit*4;
+        margin-bottom: $unit*4;
     }
 }
 
@@ -32,7 +32,7 @@
         display: block;
 
         font-size: 12px;
-        line-height: $grid-unit*3;
+        line-height: $unit*3;
         font-weight: 400;
         letter-spacing: 0.31px;
         color: $color-text;
@@ -57,8 +57,8 @@
                 right: -13px;
                 top: 50%;
 
-                width: $grid-unit;
-                height: $grid-unit;
+                width: $unit;
+                height: $unit;
 
                 background-color: $color-accent;
 

@@ -18,13 +18,14 @@ $color-text: #222222;
 $color-error: #9F210C;
 $color-white: #ffffff;
 $color-black: #000000;
+$color-border: #d0cdcc;
 
 //Fonts
 $font-primary: "Roboto", "Arial", sans-serif;
 $font-secondary: "Stolzl", sans-serif;
 $font-tertiary: "Baskerville";
 
-$grid-unit: 8px;
+$unit: 8px;
 
 $speed: 0.2s;
 $transition: 0.5s $speed;

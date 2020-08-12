@@ -949,6 +949,14 @@ input[type='number'] {
   -moz-appearance: textfield;
 }
 
+input::-webkit-contacts-auto-fill-button {
+  position: absolute;
+  right: 0;
+  visibility: hidden;
+  display: none !important;
+  pointer-events: none;
+}
+
 textarea {
   resize: none;
 }

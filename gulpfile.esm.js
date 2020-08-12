@@ -10,6 +10,7 @@ import watch from './tasks/watch';
 import server from './tasks/server';
 import sprite from './tasks/sprite';
 import copy from './tasks/copy';
+//import deploy from './tasks/deploy'; //npm install gulp-rsync --save-dev
 
 const requireDir = require('require-dir');
 const dir = requireDir('./tasks/');
@@ -23,6 +24,7 @@ exports.devbuild = devbuild;
 const build = gulp.series(clean, styles, scripts, sprite, 'images', copy);
 exports.build = build;
 
+//exports.deploy = gulp.series(deploy);
 
 gulp.task('html', function() {
   return gulp

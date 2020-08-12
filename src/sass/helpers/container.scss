@@ -4,14 +4,14 @@
     @include md-block {
         &_text {
             max-width: 560px;
-            padding-left: $grid-unit*24;
+            padding-left: $unit*24;
         }
     }
 
     @include hd-block {
         &_text {
             max-width: 580px;
-            padding-left: $grid-unit*19;
+            padding-left: $unit*19;
         }
 
         &_content {
